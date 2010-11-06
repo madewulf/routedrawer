@@ -1,11 +1,6 @@
 package net.multitasked.processing;
 
-import java.io.BufferedInputStream;
-import java.io.DataInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,22 +10,15 @@ public class RoutesParser {
 
 	static List<Route> parse(RouteDrawer parent, String filename) {
 		ArrayList<Route> routeList = new ArrayList<Route>();
-		File file = new File(filename);
-		FileInputStream fis = null;
-		BufferedInputStream bis = null;
-		DataInputStream dis = null;
+
 		Route currentRoute = null;
-		try {
-			fis = new FileInputStream(file);
-			bis = new BufferedInputStream(fis);
-			dis = new DataInputStream(bis);
 
+			String[] lines =  parent.loadStrings(filename);
+			int index=0;
 
-			while (dis.available() != 0) {
-
-
-				String s = dis.readLine();
-
+			while (index<lines.length) {
+				String s =lines[index];
+				index++;
 				String[] nodeInfos = s.split(",");
 
 				if (nodeInfos.length > 1)
@@ -50,21 +38,11 @@ public class RoutesParser {
 					if (currentRoute != null)
 					{
 						routeList.add(currentRoute);
-						System.out.println(currentRoute.nodes.size());
+						//System.out.println(currentRoute.nodes.size());
 					}
 					currentRoute = new Route(parent);
 				}
 			}
-
-			fis.close();
-			bis.close();
-			dis.close();
-
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 		return routeList;
 	}
 

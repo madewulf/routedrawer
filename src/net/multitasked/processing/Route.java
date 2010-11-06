@@ -2,6 +2,7 @@ package net.multitasked.processing;
 
 import java.util.ArrayList;
 
+import processing.core.PApplet;
 import processing.core.PVector;
 
 public class Route {
@@ -65,8 +66,8 @@ public class Route {
 		parent.ellipse(
 				currentPoint.x, 
 				currentPoint.y, 
-				parent.cos(parent.PI* ((float) currentFrame / parent.rate))* parent.dotSize, 
-				parent.cos(parent.PI* ((float) currentFrame / parent.rate))* parent.dotSize
+				PApplet.cos(PApplet.PI* ((float) currentFrame / parent.rate))* parent.dotSize, 
+				PApplet.cos(PApplet.PI* ((float) currentFrame / parent.rate))* parent.dotSize
 				);
 		if (timeSpent + stay.get(index) + travel.get(index) <= currentTime
 				&& index < nodes.size() - 1) {

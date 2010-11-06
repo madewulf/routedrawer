@@ -1,47 +1,32 @@
 package net.multitasked.processing;
 
-import java.io.BufferedInputStream;
-import java.io.DataInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 
 public class MapParser {
 
 	@SuppressWarnings("deprecation")
 	static void parse(RouteDrawer parent, String filename) {
-		File file = new File(filename);
-		FileInputStream fis = null;
-		BufferedInputStream bis = null;
-		DataInputStream dis = null;
-		Route currentRoute = null;
-		try {
-			fis = new FileInputStream(file);
 
+
+
+
+			String[] strings=parent.loadStrings(filename);
 			// Here BufferedInputStream is added for fast reading.
-			bis = new BufferedInputStream(fis);
-			dis = new DataInputStream(bis);
 
-			String s = dis.readLine();
+			String s = strings[0];
 			parent.northLimitLatitude=Float.parseFloat(s.split(":")[1]);
-			s = dis.readLine();
+			s = strings[1];
 			parent.eastLimitLongitude=Float.parseFloat(s.split(":")[1]);
-			s = dis.readLine();
+			s = strings[2];
 			parent.southLimitLatitude=Float.parseFloat(s.split(":")[1]);
-			s = dis.readLine();
+			s = strings[3];
 			parent.westLimitLongitude=Float.parseFloat(s.split(":")[1]);
-			s = dis.readLine();
+			s = strings[4];
 			parent.maxX=Integer.parseInt(s.split(":")[1]);
-			s = dis.readLine();
+			s = strings[5];
 			parent.maxY=Integer.parseInt(s.split(":")[1]);
-			s = dis.readLine();
+			s = strings[6];
 			parent.mapName= s.split(":")[1];
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+
 
 	}
 }
