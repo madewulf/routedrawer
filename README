@@ -1,8 +1,13 @@
-A little Java/Processing (http://processing.org) application drawing progressively 
-routes as time passes. The routes coordinates, travel times, stay duration and the 
-map parameters are read from external files.
+A little Java/Processing (http://processing.org) application drawing progressively routes as time passes. The routes coordinates, travel times, stay duration and the map parameters are read from external files.
 
-See a demo at : http://madewulf.github.com/routedrawer/
+It takes as input:
+- a file describing different routes with, for each stop in a route: longitude, latitude, time to reach the stop and time spent at the stop (see data/handmade.txt for an example and the format)
+- a file giving the parameters of the map : dimensions in pixel, geographical bounding box, and image file name (see data/france.map for an example)
+- the map image file (see data/france.jpg)
+
+and displays those information in a little "movie". 
+
+See http://madewulf.github.com/routedrawer/ for a demo.
 
 To compile, you just need core.jar from the Processing Project. See here for further details on compilation : http://processing.org/learning/eclipse/
 
