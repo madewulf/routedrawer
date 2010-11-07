@@ -2,7 +2,7 @@ A little Java/Processing (http://processing.org) application drawing progressive
 routes as time passes. The routes coordinates, travel times, stay duration and the 
 map parameters are read from external files.
 
-To compile, you just need core.jar from the Processing Project 
+See a demo at : http://madewulf.github.com/routedrawer/
 
-See here for further details : http://processing.org/learning/eclipse/
+To compile, you just need core.jar from the Processing Project. See here for further details on compilation : http://processing.org/learning/eclipse/
 
